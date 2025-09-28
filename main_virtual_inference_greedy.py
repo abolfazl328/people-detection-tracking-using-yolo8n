@@ -142,30 +142,17 @@ class KalmanTracker:
 
 
 # # --- CONFIGURATION ---
-
-# In[96]:
-
-
-MODEL_PATH = './kfold_runs/fold_v1_3/weights/best.pt'
-INPUT_VIDEO_PATH = './input.mp4'
-OUTPUT_VIDEO_PATH = './greedy_outputs/v2_fold3_v1_0-30_0-05_15_30.mp4'
-
-
-# In[97]:
-
-
 ZONE = np.array([[100, 500], [800, 500], [450, 200]], np.int32)
 CONF_THRESHOLD = 0.3
 IOU_THRESHOLD = 0.05
 MIN_HITS = 15
 MAX_AGE = 10
 
+MODEL_PATH = './kfold_runs/fold_v1_3/weights/best.pt'
+INPUT_VIDEO_PATH = './input.mp4'
+OUTPUT_VIDEO_PATH = f'./greedy_outputs/fold3_v1_{CONF_THRESHOLD}_{IOU_THRESHOLD}_{MIN_HITS}_{MAX_AGE}.mp4'
 
 # # --- INITIALIZATION ---
-
-# In[98]:
-
-
 model = YOLO(MODEL_PATH)
 tracker = KalmanTracker() # Use the new tracker
 cap = cv2.VideoCapture(INPUT_VIDEO_PATH)
