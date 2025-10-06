@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import cv2
 import os
 from ultralytics import YOLO
@@ -15,15 +9,7 @@ from scipy.optimize import linear_sum_assignment # Import the Hungarian Algorith
 
 
 # # --- New Kalman Tracker ---
-
-# In[94]:
-
-
 from filterpy.kalman import KalmanFilter
-
-
-# In[95]:
-
 
 class KalmanTracker:
     def __init__(self):
@@ -163,9 +149,6 @@ person_counter = 0; frames_inside_zone = defaultdict(int)
 
 # # --- MAIN PROCESSING LOOP ---
 
-# In[99]:
-
-
 with tqdm(total=int(cap.get(cv2.CAP_PROP_FRAME_COUNT)), desc="Processing with Kalman Tracker") as pbar:
     while cap.isOpened():
         success, frame = cap.read()
@@ -199,16 +182,6 @@ with tqdm(total=int(cap.get(cv2.CAP_PROP_FRAME_COUNT)), desc="Processing with Ka
 
 
 # # --- CLEANUP ---
-
-# In[100]:
-
-
-cap.release(); out.release()
+cap.release()
+out.release()
 print(f"Processing complete. Video saved to: {OUTPUT_VIDEO_PATH}")
-
-
-# In[92]:
-
-
-
-
